@@ -123,7 +123,7 @@ public class Main extends javax.swing.JFrame {
         DefaultListModel model = (DefaultListModel) this.jList1.getModel();
         if (model.contains(title)) {
             //Q1: 開啟 message dialog （10%）
-            JOptionPane.showMessageDialog(this, "Please don't input the same title!","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please don't input the same title!","",JOptionPane.INFORMATION_MESSAGE);
             
             ////////////////////
             return;
