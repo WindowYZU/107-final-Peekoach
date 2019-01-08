@@ -5,9 +5,16 @@
  */
 package lendle.courses.wp.finalexam_wp;
 
+import java.awt.Component;
+import java.awt.FlowLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -53,6 +60,16 @@ public class Main extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jDesktopPane1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jDesktopPane1AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -106,6 +123,7 @@ public class Main extends javax.swing.JFrame {
         DefaultListModel model = (DefaultListModel) this.jList1.getModel();
         if (model.contains(title)) {
             //Q1: 開啟 message dialog （10%）
+            JOptionPane.showMessageDialog(this, "Please don't input the same title!","",JOptionPane.ERROR_MESSAGE);
             
             ////////////////////
             return;
@@ -114,6 +132,11 @@ public class Main extends javax.swing.JFrame {
         model.addElement(title);
         //Q2: 建立 TaskFrame（等同於 JInternalFrame）
         //加到 jDesktopPane1 (20%)
+        TaskFrame taskFrame=new TaskFrame();
+        setContentPane(jDesktopPane1);
+        getContentPane().add(taskFrame);
+       
+         
         
         ///////////////////////////////////////
     }//GEN-LAST:event_buttonNewActionPerformed
@@ -133,10 +156,18 @@ public class Main extends javax.swing.JFrame {
             //Q3: 建立 TaskFrame（等同於 JInternalFrame）
             //設定 noteTitle, noteContent
             //加到 jDesktopPane1 (20%)
+            TaskFrame taskFrame=new TaskFrame();
+            JLabel noteTitle=new JLabel("noteTitle");
+            JTextField notecontent=new JTextField();
             
             //////////////////////////////////////////
         }
     }//GEN-LAST:event_jList1MouseClicked
+
+    private void jDesktopPane1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDesktopPane1AncestorAdded
+        // TODO add your handling code here:
+        TaskFrame taskFrame=new TaskFrame();
+    }//GEN-LAST:event_jDesktopPane1AncestorAdded
 
     /**
      * @param args the command line arguments
